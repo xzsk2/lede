@@ -1,0 +1,64 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fd76:4fde:440c::/48'
+
+config interface 'lan'
+	option type 'bridge'
+	option proto 'static'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+	option ipaddr '192.168.2.1'
+	option _orig_ifname 'apcli0 apclix0 eth0.1 ra0 rax0'
+	option _orig_bridge 'true'
+	option dns '114.114.114.114'
+	option ifname 'apclix0 eth0.1 rax0 ra0 apcli0'
+
+config device 'lan_dev'
+	option name 'eth0.1'
+	option macaddr '74:7d:24:94:03:8b'
+
+config interface 'wan'
+	option ifname 'eth0.2'
+	option _orig_ifname 'eth0.2'
+	option _orig_bridge 'false'
+	option proto 'static'
+	option ipaddr '10.0.0.2'
+	option netmask '255.255.255.0'
+	option gateway '10.0.0.1'
+	option dns '114.114.114.114'
+
+config device 'wan_dev'
+	option name 'eth0.2'
+	option macaddr '88:d7:f6:c4:e5:27'
+
+config interface 'wan6'
+	option ifname 'eth0.2'
+	option proto 'dhcpv6'
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '1'
+	option ports '0 1 2 3 6t'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '2'
+	option ports '4 6t'
+
+config interface 'vpn0'
+	option proto 'pptp'
+	option server '202.0.0.2'
+	option username 'vpnname'
+	option password 'vpnpsw'
+

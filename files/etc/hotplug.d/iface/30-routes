@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ "$ACTION" = "ifdown" -a "$INTERFACE" = "vpn0" ]
+then
+
+#在此添加断开后的代码
+route add default gw 10.0.0.1
+
+fi
+
+if [ "$ACTION" = "ifup" -a "$INTERFACE" = "vpn0" ]
+then
+
+#在此添加连接后需要执行的代码
+
+fi
